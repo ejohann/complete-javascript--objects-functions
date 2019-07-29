@@ -208,12 +208,31 @@ function retirement(retirementAge){
 retirement(66)(1980);
 
 var retirementUS = retirement(66);
+var retirementGermany = retirement(65);
+var retirementIceland = retirement(67);
+
 retirementUS(1997);
+retirementIceland(1997);
+retirementGermany(1997);
 
 
-
-
-
+function interviewQuestions(job){
+        return function(name){
+             if(job === 'designer'){
+                    console.log(name + ' can you please explain what is UX design?');
+                }
+              else if(job === 'teacher'){
+                    console.log('What subject do you teach ' + name + '?');
+                } 
+              else
+               {
+                   console.log('Hello ' + name + ' what do you do?');
+               }        
+           }
+ }
+    
+ var teacherQuestion = interviewQuestions('teacher');
+ teacherQuestion('John');
 
 
 
