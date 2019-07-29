@@ -54,7 +54,7 @@ jane.calculateAge();
 
 
 // Primitives vs Objects
-
+/*
 var a = 23;
 var b = a;
 a = 46;
@@ -91,10 +91,27 @@ change(age, obj);
 
 console.log(age);
 console.log(obj.city);
+*/
 
 
+var years = [1980, 1997, 1948, 2005];
 
+function arrayCalc(arr, fn){
+    var arrRes = [];
+    for(var i = 0; i < arr.length; i++)
+        {
+            arrRes.push(fn(arr[i]));
+        }
+    return arrRes;
+}
 
+function calculateAge(el){
+    return 2019 - el; 
+}
+
+var ages = arrayCalc(years, calculateAge);
+
+console.log(ages);
 
 
 
