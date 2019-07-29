@@ -273,7 +273,9 @@ johnFriendly('morning');
 johnFriendly('night');
 
 
+var emilyFormal = john.presentation.bind(emily, 'formal');
 
+emilyFormal('afternoon');
 
 
 
