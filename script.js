@@ -196,7 +196,7 @@ game();
 
 
 // Closures
-
+/*
 function retirement(retirementAge){
     var a = ' years left until retirement.';
     return function(yearOfBirth){
@@ -233,6 +233,52 @@ function interviewQuestions(job){
     
  var teacherQuestion = interviewQuestions('teacher');
  teacherQuestion('John');
+
+*/
+
+ 
+  // Bind, call and apply
+
+var john = {
+    name: 'John',
+    age: 38,
+    job: 'teacher',
+    presentation: function(style, timeOfDay){
+        if(style === 'formal'){
+            console.log('Good ' + timeOfDay + ', ladies and gentlemen! I\'m ' + this.name + ' I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        }
+    else if(style === 'friendly'){
+           console.log('Hey what\'s up?  I\'m ' + this.name + ', I\'m  a ' + this.job + ' and I\'m ' + this.age + ' years old.  Have a nice ' + timeOfDay + '.');     
+       }
+    }   
+};
+
+
+var emily = {
+    name: 'Emily',
+    age: 38,
+    job: 'designer'
+};
+
+john.presentation('formal', 'morning');
+
+
+john.presentation.call(emily, 'friendly', 'afternoon');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
