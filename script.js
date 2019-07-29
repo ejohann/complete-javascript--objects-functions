@@ -262,11 +262,15 @@ var emily = {
 
 john.presentation('formal', 'morning');
 
-
 john.presentation.call(emily, 'friendly', 'afternoon');
 
+//john.presentation.apply(emily, ['friendly', 'afternoon']);
 
+var johnFriendly = john.presentation.bind(john, 'friendly');
 
+johnFriendly('morning');
+
+johnFriendly('night');
 
 
 
