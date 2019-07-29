@@ -279,11 +279,33 @@ emilyFormal('afternoon');
 
 
 
+var years = [1980, 1997, 1948, 2005];
+
+function arrayCalc(arr, fn){
+    var arrRes = [];
+    for(var i = 0; i < arr.length; i++)
+        {
+            arrRes.push(fn(arr[i]));
+        }
+    return arrRes;
+}
+
+function calculateAge(el){
+    return 2019 - el; 
+}
+
+function isFullAge(limit, el){
+    return el >= limit;
+}
 
 
 
+var ages = arrayCalc(years, calculateAge);
 
+var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 
+console.log(ages);
+console.log(fullJapan);
 
 
 
