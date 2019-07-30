@@ -238,7 +238,7 @@ function interviewQuestions(job){
 
  
   // Bind, call and apply
-
+/*
 var john = {
     name: 'John',
     age: 38,
@@ -308,7 +308,62 @@ console.log(ages);
 console.log(fullJapan);
 
 
+*/
 
 
+/*************************************************************
+****  CODING CHALLENGE 7
+*************************************************************/
 
+/*
+      1. Build a function constructor called Question.  A question should include:
+        a.  Question itself
+        b.  The answers from which the player can choose the correct one (choose an adequate data structure)
+        c.  Correct answer (HINT: use a number)
+      2.  Create a couple of questions using the constructor
+      3. Store them all inside an array
+      4. Select one random question and log it to the console, together with the possible answers (each question    should have a number) HINT: write a method for the Question objects for this task.
+      5.  Use the 'prompt' function to ask the user for the correct answer.  The user should input the number of the correct answer, such as you displayed it on Task 4.
+      6.  Check if the answer is correct and print to the console whether the answer is correct or not.  HINT: write another method for this.
+      7.  Make sure all you code is private.
+*/     
 
+var Question = function(question, answers, correctAnswer){
+    this.question = question;
+    this.answers = answers;
+    this.correctAnswer = correctAnswer;
+};
+
+function checkAnswer(answer, correctAnswer){
+    if(answer === correctAnswer)
+      {
+        console.log('Congratulations!!! You are correct');
+      }
+     else
+      {
+        console.log('Sorry, your answer is incorrect');        
+      }
+}
+
+function randomQuestion(arr){
+    return Math.floor(Math.random() * (arr.length));
+}
+
+var firstQuestion = new Question('What is the capital of England?', ['Paris', 'New York', 'London', 'Milan'], 2);
+var secondQuestion = new Question('What is the color of grass?', ['Yellow','Red','White','Green'], 3);
+var thirdQuestion = new Question('Who is the best programmer?', ['Johanne Lewis', 'Lewis Hamilton', 'Michael Jordan', 'Cardi B'], 0);
+
+var questions = [firstQuestion, secondQuestion, thirdQuestion];
+
+var randomQuestion = questions[randomQuestion(questions)];
+
+(function (question){
+    console.log(question['question']);
+    var answers = question['answers'];
+    for(var i = 0; i < answers.length; i++)
+        {
+            console.log(i + ' ' +answers[i]);
+        }
+    var answer = prompt('Please enter the number in the console, which corresponds to the correct answer');
+    checkAnswer(parseInt(answer), question['correctAnswer']);
+})(randomQuestion);
