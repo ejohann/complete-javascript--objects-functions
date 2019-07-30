@@ -396,22 +396,56 @@ var randomQuestion = questions[randomQuestion(questions)];
     this.answers = answers;
     this.correctAnswer = correctAnswer;
 };
-
+    
+var totalScore = 0;
+    
 function checkAnswer(answer, correctAnswer){
     if(answer === correctAnswer)
       {
         console.log('Congratulations!!! You are correct');
+        totalScore += 1;
       }
      else
       {
-        console.log('Sorry, your answer is incorrect');        
+        console.log('Sorry, your answer is incorrect'); 
       }
+    displayScore();
+    playGame();
+}
+
+function displayScore(){
+   console.log('Score: ' + totalScore);
+}
+    
+function calcScore(thisScore, totalScore){
+    totalScore = thisScore + totalscore;
 }
 
 function randomQuestion(arr){
     return Math.floor(Math.random() * (arr.length));
 }
-
+    
+ function nextQuestion(question){
+    console.log(question['question']);
+    var answers = question['answers'];
+    
+    for(var i = 0; i < answers.length; i++)
+        {
+            console.log(i + ' ' + answers[i]);
+        }
+    var answer = prompt('Please enter the number, which corresponds to the correct answer.  You may type \'exit\' at any point to quit game');
+    
+    if(answer === 'exit')
+      {
+         console.log('Thank you for playing!');
+         displayScore();
+      }
+    else
+      {
+        checkAnswer(parseInt(answer), question['correctAnswer']);
+      }
+ }
+    
 var firstQuestion = new Question('What is the capital of England?', ['Paris', 'New York', 'London', 'Milan'], 2);
 var secondQuestion = new Question('What is the color of grass?', ['Yellow','Red','White','Green'], 3);
 var thirdQuestion = new Question('Who is the best programmer?', ['Johanne Lewis', 'Lewis Hamilton', 'Michael Jordan', 'Cardi B'], 0);
@@ -421,17 +455,9 @@ var sixthQuestion = new Question('When do you see stars?', ['When it is bright',
 
 var questions = [firstQuestion, secondQuestion, thirdQuestion, forthQuestion, fifthQuestion, sixthQuestion];
 
-var randomQuestion = questions[randomQuestion(questions)];
-
-(function (question){
-    console.log(question['question']);
-    var answers = question['answers'];
-    for(var i = 0; i < answers.length; i++)
-        {
-            console.log(i + ' ' +answers[i]);
-        }
-    var answer = prompt('Please enter the number in the console, which corresponds to the correct answer');
-    checkAnswer(parseInt(answer), question['correctAnswer']);
-})(randomQuestion);
-        
+function playGame(){
+    var question = questions[randomQuestion(questions)];
+    nextQuestion(question);
+}    
+ playGame();        
 })();
