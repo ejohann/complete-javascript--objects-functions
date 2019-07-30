@@ -328,7 +328,7 @@ console.log(fullJapan);
       7.  Make sure all you code is private.
 */     
 
-
+/*
 (function(){
     
     var Question = function(question, answers, correctAnswer){
@@ -357,6 +357,69 @@ var secondQuestion = new Question('What is the color of grass?', ['Yellow','Red'
 var thirdQuestion = new Question('Who is the best programmer?', ['Johanne Lewis', 'Lewis Hamilton', 'Michael Jordan', 'Cardi B'], 0);
 
 var questions = [firstQuestion, secondQuestion, thirdQuestion];
+
+var randomQuestion = questions[randomQuestion(questions)];
+
+(function (question){
+    console.log(question['question']);
+    var answers = question['answers'];
+    for(var i = 0; i < answers.length; i++)
+        {
+            console.log(i + ' ' +answers[i]);
+        }
+    var answer = prompt('Please enter the number in the console, which corresponds to the correct answer');
+    checkAnswer(parseInt(answer), question['correctAnswer']);
+})(randomQuestion);
+        
+})();
+*/
+
+
+/**********************************************************************
+****  CODING CHALLENGE 7 - EXPERT LEVEL
+**********************************************************************/
+
+/*
+      8. After you display the result, display a next random question.  
+            HINT: write a function to call it right after display the result
+      9. Be careful the game never ends.  So include the option to quit the game if the user writes 'exit' instead of the answer. 
+      10. Track the user's score to make the game more fun.
+           HINT: Use the power of closures for this
+      11. Display the score in the console.  HINT: user another method for this
+*/  
+
+
+(function(){
+    
+    var Question = function(question, answers, correctAnswer){
+    this.question = question;
+    this.answers = answers;
+    this.correctAnswer = correctAnswer;
+};
+
+function checkAnswer(answer, correctAnswer){
+    if(answer === correctAnswer)
+      {
+        console.log('Congratulations!!! You are correct');
+      }
+     else
+      {
+        console.log('Sorry, your answer is incorrect');        
+      }
+}
+
+function randomQuestion(arr){
+    return Math.floor(Math.random() * (arr.length));
+}
+
+var firstQuestion = new Question('What is the capital of England?', ['Paris', 'New York', 'London', 'Milan'], 2);
+var secondQuestion = new Question('What is the color of grass?', ['Yellow','Red','White','Green'], 3);
+var thirdQuestion = new Question('Who is the best programmer?', ['Johanne Lewis', 'Lewis Hamilton', 'Michael Jordan', 'Cardi B'], 0);
+var forthQuestion = new Question('What did the carpet say to the floor?', ['Don\'t move I\'ve got you covered', 'Hello there', 'You are so hard', 'We go well together'], 0);
+var fifthQuestion = new Question('When it rains...', ['it is wet', 'it pours', 'it gets dark', 'it is nice'], 1);
+var sixthQuestion = new Question('When do you see stars?', ['When it is bright', 'When it is full moon', 'When it is dark', 'In the daytime'], 2);
+
+var questions = [firstQuestion, secondQuestion, thirdQuestion, forthQuestion, fifthQuestion, sixthQuestion];
 
 var randomQuestion = questions[randomQuestion(questions)];
 
