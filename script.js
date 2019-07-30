@@ -328,7 +328,10 @@ console.log(fullJapan);
       7.  Make sure all you code is private.
 */     
 
-var Question = function(question, answers, correctAnswer){
+
+(function(){
+    
+    var Question = function(question, answers, correctAnswer){
     this.question = question;
     this.answers = answers;
     this.correctAnswer = correctAnswer;
@@ -367,3 +370,5 @@ var randomQuestion = questions[randomQuestion(questions)];
     var answer = prompt('Please enter the number in the console, which corresponds to the correct answer');
     checkAnswer(parseInt(answer), question['correctAnswer']);
 })(randomQuestion);
+        
+})();
